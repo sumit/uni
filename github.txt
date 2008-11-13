@@ -4,61 +4,8 @@ SUmitSUmitSUmitSUmitSUmitSUmitSUmitSUmitSUmit
 SUmitSUmitSUmitSUmitSUmitSUmitvv
 SUmitSUmitSUmitSUmitSUmitSUmitSUmitSUmitSUmitSUmit
 SUmitSUmitSUmitSUmitSUmitSUmitSUmitSUmitSUmitSUmitSUmitSUmitSUmit
-try
-           {
-               Match m = gitPathRegEx.Match(ProjectInfo.ConnectionInfo);
-
-               if (m.Success)
-               {
-                   string connPath = ProviderUtil.FilterRemotePath(m.Groups["path"].Value.Trim());
-
-                   string extractedPath = m.Groups[0].Value;
-
-                   //Modified By Universal
-
-                   if (!IsCheckoutCommandInPlace(ProjectInfo.ConnectionInfo, extractedPath))
-                   {
-                       if (!ProjectInfo.LocalCachePath.Exists)
-                       {
-                           ProjectInfo.ConnectionInfo = IntegrateCheckoutCommand(ProjectInfo.ConnectionInfo, extractedPath);
-                       }
-                       else
-                       {
-                           ProjectInfo.ConnectionInfo = IntegrateUpdateCommand(ProjectInfo.ConnectionInfo, extractedPath);
-                           ProjectInfo.LocalCachePath = ProjectInfo.LocalCachePath.CreateSubdirectory(ProjectInfo.LocalCachePath.Name.Replace(".git",""));
-                       }
-                   }
-                   
-                   //support of projects with spaces in names
-                   if (extractedPath.IndexOf('"') == -1)
-                   {
-                       ProjectInfo.ConnectionInfo = ProjectInfo.ConnectionInfo.Replace(connPath.Trim(), EncodeUrlSpaces(connPath.Trim()));
-                   }
-                   ReaderWorker.GetLatestVersion(profile,
-                       ProjectInfo,
-                       null,
-                       RepositoryRequestFailedMessages,
-                       null,
-                       new ProcessEventHandler(ProcessWrapper_ErrorStreamChanged),
-                       // see Case 10622 - set to true when git.exe will be able to work with \\?\ paths.
-                       false); // Use \\?\ style absolute path.
-               }
-               else
-               {
-                   throw new VersionControlException(this, "Invalid git connection string.");
-               }
-           }
-           catch (Exception exc)
-           {
-               Match m = longFileErrorRE.Match(exc.Message);
-               if (m.Success)
-               {
-                   string localPath = Path.Combine(ProjectInfo.LocalCachePath.FullName, m.Groups["file"].Value);
-                   if (localPath.Length > MAX_PATH)
-                   {
-                       throw new VersionControlException(this, "Checkout failed because path is above MAX_PATH limit: " + localPath, exc);
-                   }
-               }
-
-               throw new VersionControlException(this, "Checkout failed: " + exc.Message, exc);
-           }
+ALEXALEXALEXALEXALEXALEXALEXALEXALEXALEXALEXALEXALEXALEXALEXALEXALEX
+ALEXALEXALEXALEXALEXALEXALEXALEXALEXALEXALEXALEXALEXALEXALEXALEXALEXALEXALEX
+ALEXALEXALEXALEXALEXALEXALEXALEXALEXALEXALEXALEXALEXALEXALEXALEXALEXALEXALEXALEXALEXALEX
+ALEXALEXALEXALEXALEXALEXALEXALEXALEXALEXALEXALEXALEXALEXALEXALEXALEXALEXALEXALEXALEX
+ALEXALEXALEXALEXALEXALEXALEXALEXALEXALEXALEXALEXALEXALEXALEXALEX
